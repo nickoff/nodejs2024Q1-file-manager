@@ -12,12 +12,12 @@ printCWD();
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
 rl.prompt();
-rl.on('line', (input) => {
+rl.on('line', async (input) => {
   if (input.split(' ')[0] === '.exit') {
     rl.close();
   } else {
     try {
-      commandController[input.split(' ')[0]](input.split(' ').slice(1));
+      await commandController[input.split(' ')[0]](input.split(' ').slice(1));
     } catch (e) {
       if (e.message === 'Operation failed') {
         console.log(e.message);
