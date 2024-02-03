@@ -1,5 +1,6 @@
 import * as readline from 'node:readline/promises';
 import * as os from 'node:os';
+import { commandController } from './modules/command-controller.js';
 
 const startArgs = process.argv.find(arg => arg.startsWith('--username'));
 const username = startArgs?.split('=')[1] ?? 'Guest';
@@ -15,7 +16,15 @@ rl.on('line', (input) => {
   if (input.split(' ')[0] === '.exit') {
     rl.close();
   } else {
-    console.log(`You entered command: ${input.split(' ')[0]}`);
+    try {
+      commandController[input.split(' ')[0]](input.split(' ').slice(1));
+    } catch (e) {
+      if (e.message === 'Operation failed') {
+        console.log(e.message);
+      } else {
+        console.log(`Invalid input`);
+      }
+    };
   }
   printCWD()
   rl.prompt();
