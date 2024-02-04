@@ -115,6 +115,27 @@ export const cp = async (arg) => {
   }
 }
 
+export const rm = async (arg) => {
+  if (arg.length === 1) {
+    try {
+      const currentDir = process.cwd();
+      const path = join(currentDir, arg[0]);
+      const isFile = (await fs.stat(path)).isFile();
+
+      if (!isFile) {
+        throw new Error('Operation failed');
+      }
+
+      await fs.rm(path);
+      
+    } catch {
+      throw new Error('Operation failed');
+    }
+  } else {
+    throw new Error('Operation failed');
+  }
+}
+
 function copyFile(oldPathFile, newPathFile) {
   return new Promise ((res, rej) => {
     pipeline(

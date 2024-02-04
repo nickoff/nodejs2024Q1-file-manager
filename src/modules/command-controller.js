@@ -1,5 +1,5 @@
 import { up, cd, ls } from './navigation.js';
-import { cat, add, rn, cp, mv } from './basic-file-operation.js';
+import { cat, add, rn, cp, mv, rm } from './basic-file-operation.js';
 
 export const commandController = {
   'up': up,
@@ -9,5 +9,6 @@ export const commandController = {
   'add': add,
   'rn': rn,
   'cp': cp,
-  'mv': mv
+  'mv': mv,
+  'rm': rm
 }
