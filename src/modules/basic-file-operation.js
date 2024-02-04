@@ -35,3 +35,19 @@ export const cat = async (arg) => {
     throw new Error('Operation failed');
   }
 }
+
+export const add = async (arg) => {
+  if (arg.length === 1) {
+    try {
+      const currentDir = process.cwd();
+      const path = join(currentDir, arg[0]);
+
+      await fs.writeFile(path, '');
+      
+    } catch {
+      throw new Error('Operation failed');
+    }
+  } else {
+    throw new Error('Operation failed');
+  }
+}
