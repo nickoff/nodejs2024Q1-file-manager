@@ -1,6 +1,7 @@
 import * as readline from 'node:readline/promises';
 import * as os from 'node:os';
 import { commandController } from './modules/command-controller.js';
+import { errMsgText } from './modules/constant.js';
 
 const startArgs = process.argv.find(arg => arg.startsWith('--username'));
 const username = startArgs?.split('=')[1] ?? 'Guest';
@@ -19,10 +20,10 @@ rl.on('line', async (input) => {
     try {
       await commandController[input.split(' ')[0]](input.split(' ').slice(1));
     } catch (e) {
-      if (e.message === 'Operation failed') {
+      if (e.message === errMsgText.operation) {
         console.log(e.message);
       } else {
-        console.log(`Invalid input`);
+        console.log(errMsgText.input);
       }
     };
   }

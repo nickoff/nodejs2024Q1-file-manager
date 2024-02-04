@@ -1,9 +1,10 @@
 import fs from 'node:fs/promises';
+import { errMsg } from '../modules/constant.js';
 export const up = (arg) => {
   if (arg.length === 0) {
     process.chdir('..');
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -11,7 +12,7 @@ export const cd = (path) => {
   if (path.length === 1) {
     process.chdir(path[0]);
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -36,10 +37,10 @@ export const ls = async (arg) => {
     
       console.table(filesWithTypes);
     } else {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } catch {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 

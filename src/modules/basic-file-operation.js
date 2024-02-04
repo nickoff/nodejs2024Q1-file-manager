@@ -2,6 +2,7 @@ import * as fs from 'node:fs/promises';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pipeline } from 'node:stream';
+import { errMsg } from '../modules/constant.js';
 
 export const cat = async (arg) => {
   if (arg.length === 1) {
@@ -11,7 +12,7 @@ export const cat = async (arg) => {
       const isFile = (await fs.stat(path)).isFile();
 
       if (!isFile) {
-        throw new Error('Operation failed');
+        throw errMsg.operation;
       }
 
       await new Promise ((res) => {
@@ -25,15 +26,15 @@ export const cat = async (arg) => {
           res();
         })
         rs.on('error', () => {
-          throw new Error('Operation failed');
+          throw errMsg.operation;
         })
       })
       
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -46,10 +47,10 @@ export const add = async (arg) => {
       await fs.writeFile(path, '');
       
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -63,10 +64,10 @@ export const rn = async (arg) => {
       await fs.rename(oldPath, newPath);
       
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -78,7 +79,7 @@ export const mv = async (arg) => {
       const isFile = (await fs.stat(oldPath)).isFile();
 
       if (!isFile) {
-        throw new Error('Operation failed');
+        throw errMsg.operation;
       }
 
       const newPathDir = resolve(currentDir, arg[1]);
@@ -86,10 +87,10 @@ export const mv = async (arg) => {
       await copyFile(oldPath, newPath);
       await fs.rm(oldPath);
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -101,17 +102,17 @@ export const cp = async (arg) => {
       const isFile = (await fs.stat(oldPath)).isFile();
 
       if (!isFile) {
-        throw new Error('Operation failed');
+        throw errMsg.operation;
       }
 
       const newPathDir = resolve(currentDir, arg[1]);
       const newPath = join(newPathDir, arg[0]);
       await copyFile(oldPath, newPath);
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
@@ -123,16 +124,16 @@ export const rm = async (arg) => {
       const isFile = (await fs.stat(path)).isFile();
 
       if (!isFile) {
-        throw new Error('Operation failed');
+        throw errMsg.operation;
       }
 
       await fs.rm(path);
       
     } catch {
-      throw new Error('Operation failed');
+      throw errMsg.operation;
     }
   } else {
-    throw new Error('Operation failed');
+    throw errMsg.operation;
   }
 }
 
