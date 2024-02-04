@@ -51,3 +51,20 @@ export const add = async (arg) => {
     throw new Error('Operation failed');
   }
 }
+
+export const rn = async (arg) => {
+  if (arg.length === 2) {
+    try {
+      const currentDir = process.cwd();
+      const oldPath = join(currentDir, arg[0]);
+      const newPath = join(currentDir, arg[1]);
+
+      await fs.rename(oldPath, newPath);
+      
+    } catch {
+      throw new Error('Operation failed');
+    }
+  } else {
+    throw new Error('Operation failed');
+  }
+}
