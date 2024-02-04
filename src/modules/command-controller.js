@@ -1,5 +1,6 @@
 import { up, cd, ls } from './navigation.js';
 import { cat, add, rn, cp, mv, rm } from './basic-file-operation.js';
+import { osInfo } from './os-system-info.js';
 
 export const commandController = {
   'up': up,
@@ -10,5 +11,6 @@ export const commandController = {
   'rn': rn,
   'cp': cp,
   'mv': mv,
-  'rm': rm
+  'rm': rm,
+  'os': osInfo
 }
