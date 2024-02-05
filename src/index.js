@@ -7,6 +7,8 @@ const startArgs = process.argv.find(arg => arg.startsWith('--username'));
 const username = startArgs?.split('=')[1] ?? 'Guest';
 const homeUserDir = os.homedir();
 process.chdir(homeUserDir);
+
+console.log('\x1b[31m\x1b[1m%s\x1b[0m', 'ATTENTION !!!\nOnly works with paths without spaces. Do not enclose paths in quotes.\nExample: add ./file.txt');
 console.log(`Welcome to the File Manager, ${username}!`);
 printCWD();
 
