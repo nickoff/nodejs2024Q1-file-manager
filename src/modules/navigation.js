@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { errMsg } from './constant.js';
 export const up = (arg) => {
-  if (arg.length === 0) {
+  if (arg.length === 1) {
     process.chdir('..');
   } else {
     throw errMsg.operation;
@@ -18,7 +18,7 @@ export const cd = (path) => {
 
 export const ls = async (arg) => {
   try {
-    if (arg.length === 0) {
+    if (arg.length === 1) {
       const currentDir = process.cwd();
       const files = (await fs.readdir(currentDir))
       let filesWithTypes = await Promise.all(files.map(async (file) => {

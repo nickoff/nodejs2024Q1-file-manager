@@ -22,7 +22,7 @@ export const cat = async (arg) => {
           data += chunk;
         });
         rs.on('end', () => {
-          process.stdout.write(data);
+          console.log(data);
           res();
         })
         rs.on('error', () => {
