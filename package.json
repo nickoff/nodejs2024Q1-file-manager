@@ -1,0 +1,20 @@
+{
+  "name": "nodejs2024q1-file-manager",
+  "version": "1.0.0",
+  "description": "Task NodeJS for The RS School file-manager",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickoff/nodejs2024Q1-file-manager.git"
+  },
+  "author": "Milalai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickoff/nodejs2024Q1-file-manager/issues"
+  },
+  "homepage": "https://github.com/nickoff/nodejs2024Q1-file-manager#readme"
+}
