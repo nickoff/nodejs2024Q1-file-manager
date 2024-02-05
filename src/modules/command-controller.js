@@ -2,6 +2,7 @@ import { up, cd, ls } from './navigation.js';
 import { cat, add, rn, cp, mv, rm } from './basic-file-operation.js';
 import { osInfo } from './os-system-info.js';
 import { hash } from './hash.js';
+import { compress, decompress } from './compress.js';
 
 export const commandController = {
   'up': up,
@@ -14,5 +15,7 @@ export const commandController = {
   'mv': mv,
   'rm': rm,
   'os': osInfo,
-  'hash': hash
+  'hash': hash,
+  'compress': compress,
+  'decompress': decompress
 }
