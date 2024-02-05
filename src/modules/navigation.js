@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { errMsg } from '../modules/constant.js';
+import { errMsg } from './constant.js';
 export const up = (arg) => {
   if (arg.length === 0) {
     process.chdir('..');

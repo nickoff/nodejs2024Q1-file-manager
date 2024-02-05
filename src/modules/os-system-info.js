@@ -1,5 +1,5 @@
 import * as os from 'node:os';
-import { errMsg } from '../modules/constant.js';
+import { errMsg } from './constant.js';
 export const osInfo = async (arg) => {
   if (arg.length === 1) {
 

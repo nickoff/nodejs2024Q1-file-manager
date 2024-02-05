@@ -2,7 +2,7 @@ import * as fs from 'node:fs/promises';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pipeline } from 'node:stream';
-import { errMsg } from '../modules/constant.js';
+import { errMsg } from './constant.js';
 
 export const cat = async (arg) => {
   if (arg.length === 1) {
